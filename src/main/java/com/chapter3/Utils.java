@@ -1,16 +1,17 @@
-public class FirstSample {
+package com.chapter3;
 
-    public static final double CM_PER_INCH = 2.54;
-    static int intVar =  -2147483648;
-    static long longVar = 2147483647;//9223372036854775807;
-    static byte byteVar = 100;
-    static short shortVar = 32767;
-    static char charVar1 = 'Q';
-    static char charVar2 = 'A';
-    static float floatVar = 3.40282347E+38F;
-    static double doubleVar = 3.14;
-    static boolean boolVar = true;
-    enum Division { Automation, Manual };
+public class Utils {
+    private static final double CM_PER_INCH = 2.54;
+    private static int intVar =  -2147483648;
+    private static long longVar = 9223372036854775807L;
+    private static byte byteVar = 100;
+    private static short shortVar = 32767;
+    private static char charVar1 = 'Q';
+    private static char charVar2 = 'A';
+    private static float floatVar = 3.40282347E+38F;
+    private static double doubleVar = 3.14;
+    private static boolean boolVar = true;
+    private enum Division { Automation, Manual };
 
     public static void learningDataTypes() {
         System.out.println("Byte: "+ byteVar);
@@ -18,6 +19,8 @@ public class FirstSample {
         System.out.println("Int: "+ intVar);
         System.out.println("Long: "+ longVar);
         System.out.println("Two chars:"+charVar1+""+charVar2);
+        System.out.println(charVar1+charVar2);
+        System.out.println(charVar1-charVar2);
     }
 
     public static void learningMathOperations() {
@@ -66,18 +69,21 @@ public class FirstSample {
         int castToInt = (int) (n - doubleVar);
         System.out.println("Casting Double to Int:" +castToInt);
 
-        double castToDouble = n - doubleVar;
+        double castToDouble = ((int) (n - doubleVar));
         System.out.println("Casting Int to Double:" +castToDouble);
 
         double х = 9.997;
         int nx = (int)Math.round(х);
         System.out.println("Round:" +nx);
+
+        int a = 10%3;
+        System.out.println(a);
     }
 
     public static void learningEnums() {
-        Division div = Division.Automation;
+        Utils.Division div = Utils.Division.Automation;
         System.out.println("Nadiia wants to be in the "+div+" division :)");
-        System.out.println("Nadiia has been working in the "+Division.Manual+" division too long :D");
+        System.out.println("Nadiia has been working in the "+ Utils.Division.Manual+" division too long :D");
     }
 
     public static void learningInitVariables() {
@@ -85,14 +91,39 @@ public class FirstSample {
         b = 1;
         a = 0;
         System.out.println("Few variables: a="+a+", b="+b+", c="+c);
+
+        int x=0;
+        x+=4;
+        System.out.println("Operation +=" +x);
     }
 
-    public static void main(String[] args){
-        learningDataTypes();
-        learningMathOperations();
-        learningConstants();
-        learningTypeCasting();
-        learningEnums();
-        learningInitVariables();
-        }
+    public static void learningTypeCastingPart2() {
+        int integerRes, integerRes2;
+        double doubleRes;
+        int intVal = 10;
+        double dobVal = 2.5;
+        integerRes = (int) (intVal / dobVal);
+        System.out.println("Assign dividing result to Int: " +integerRes);
+        doubleRes = intVal / dobVal;
+        System.out.println("Assign dividing result to Double: " +doubleRes);
+        integerRes2 = intVal / (int) dobVal;
+        System.out.println("Assign dividing result to Int with casting: " +integerRes2);
+
     }
+
+    public static void learningStringOperations() {
+        String st1 = "substring";
+        String st3 = " is time to go to bed";
+        int i = 0;
+
+        String st2 = st1.substring(3);
+        System.out.println(st2 + " is substring of " + st1);
+        System.out.println(i+i+":"+i+i+st3);
+        String sizes = String.join(" / ", "S","M","L","XL");
+        System.out.println("Clothes sizes: "+sizes);
+        st1 = st1.substring(3) + " changed";
+        System.out.println("Changes in the string: " + st1);
+
+
+    }
+}
