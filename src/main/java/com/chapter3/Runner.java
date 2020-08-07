@@ -2,16 +2,14 @@ package com.chapter3;
 
 public class Runner {
 
-    static Utils util = new Utils();
-
-    public static void main(String[] args){
-        util.learningDataTypes();
-        util.learningMathOperations();
-        util.learningConstants();
-        util.learningTypeCasting();
-        util.learningEnums();
-        util.learningInitVariables();
-        util.learningTypeCastingPart2();
-        util.learningStringOperations();
-        }
+    public static void main(String[] args) {
+        Utils.learningDataTypes();
+        Utils.learningMathOperations();
+        Utils.learningConstants();
+        Utils.learningTypeCasting();
+        Utils.learningEnums();
+        Utils.learningInitVariables();
+        Utils.learningTypeCastingPart2();
+        Utils.learningStringOperations();
     }
+}
