@@ -71,11 +71,11 @@ public class StringUtils {
         System.out.printf("Entered text contains %d symbols.\n", getTextLength(enteredString));
         System.out.printf("Entered text contains 'a' letter %d times.\n", countLetters(enteredString));
         System.out.printf("Entered text with replaced 'a' letter: %s.\n", replaceLetters(enteredString));
-        System.out.printf("Entered text contains 'a' letter on the following positions: %s\n", findLetterIndex(enteredString));
-        System.out.printf("Array of words: %s\n", makeArrayFromString(enteredString));
-        System.out.printf("Subtracted text: %s\n", subtractText(enteredString));
-        System.out.printf("Reversed string: %s\n", reverseString(enteredString));
-        System.out.printf("Entered test converted to lower case: %s\n", convertStringToLowerCase(enteredString));
-        System.out.printf("Entered test converted to upper case: %s\n", convertStringToUpperCase(enteredString));
+        System.out.printf("Entered text contains 'a' letter on the following positions: %s.\n", findLetterIndex(enteredString));
+        System.out.printf("Array of words: %s.\n", makeArrayFromString(enteredString));
+        System.out.printf("Subtracted text: %s.\n", subtractText(enteredString));
+        System.out.printf("Reversed string: %s.\n", reverseString(enteredString));
+        System.out.printf("Entered test converted to lower case: %s.\n", convertStringToLowerCase(enteredString));
+        System.out.printf("Entered test converted to upper case: %s.\n", convertStringToUpperCase(enteredString));
     }
 }
