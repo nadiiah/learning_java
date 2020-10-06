@@ -31,7 +31,7 @@ public class StringUtil {
 
         while (start != -1) {
             System.out.print(start + StringUtils.SPACE);
-            start = enteredString.indexOf('a', start+1);
+            start = enteredString.indexOf('a', start + 1);
         }
         System.out.print(StringUtils.LF);
     }
@@ -70,12 +70,11 @@ public class StringUtil {
         return enteredString.toUpperCase();
     }
 
-    public static String enterAndReadText()
-    {
+    public static String enterAndReadText() {
         Scanner string = new Scanner(System.in);
         System.out.print("Please enter a string which will be processed: ");
         String strFromConsole = string.nextLine();
-        return  strFromConsole;
+        return strFromConsole;
     }
 
     public static void workWithEnteredString(String enteredString) {
