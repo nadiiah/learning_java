@@ -1,8 +1,11 @@
 package com.chapter3;
 
-import java.util.Arrays;
+import org.apache.commons.lang3.StringUtils;
 
-public class StringUtils {
+import java.util.Scanner;
+
+
+public class StringUtil {
 
     private static String getEnteredText(String enteredString) {
         return enteredString;
@@ -23,23 +26,24 @@ public class StringUtils {
         return count;
     }
 
-    private static String findLetterIndex(String enteredString) {
-        StringBuilder letterIndexes = new StringBuilder();
+    private static void findLetterIndex(String enteredString) {
+        int start = enteredString.indexOf('a');
 
-        for (int i = 0; i < enteredString.length(); i++) {
-            if (enteredString.charAt(i) == 'a') {
-                letterIndexes.append(i).append(" ");
-            }
+        while (start != -1) {
+            System.out.print(start + StringUtils.SPACE);
+            start = enteredString.indexOf('a', start+1);
         }
-        return letterIndexes.toString();
+        System.out.print(StringUtils.LF);
     }
 
     private static String replaceLetters(String enteredString) {
         return enteredString.replace('a', 'A');
     }
 
-    private static String makeArrayFromString(String enteredString) {
-        return Arrays.toString(enteredString.split(" "));
+    private static void makeArrayFromString(String enteredString) {
+        for (String word : enteredString.split(StringUtils.SPACE)) {
+            System.out.println(word);
+        }
     }
 
     private static String subtractText(String enteredString) {
@@ -66,13 +70,23 @@ public class StringUtils {
         return enteredString.toUpperCase();
     }
 
+    public static String enterAndReadText()
+    {
+        Scanner string = new Scanner(System.in);
+        System.out.print("Please enter a string which will be processed: ");
+        String strFromConsole = string.nextLine();
+        return  strFromConsole;
+    }
+
     public static void workWithEnteredString(String enteredString) {
         System.out.printf("You've entered the following text: %s.\n", getEnteredText(enteredString));
         System.out.printf("Entered text contains %d symbols.\n", getTextLength(enteredString));
         System.out.printf("Entered text contains 'a' letter %d times.\n", countLetters(enteredString));
         System.out.printf("Entered text with replaced 'a' letter: %s.\n", replaceLetters(enteredString));
-        System.out.printf("Entered text contains 'a' letter on the following positions: %s.\n", findLetterIndex(enteredString));
-        System.out.printf("Array of words: %s.\n", makeArrayFromString(enteredString));
+        System.out.print("Entered text contains 'a' letter on the following positions: ");
+        findLetterIndex(enteredString);
+        System.out.print("Array of words: ");
+        makeArrayFromString(enteredString);
         System.out.printf("Subtracted text: %s.\n", subtractText(enteredString));
         System.out.printf("Reversed string: %s.\n", reverseString(enteredString));
         System.out.printf("Entered test converted to lower case: %s.\n", convertStringToLowerCase(enteredString));

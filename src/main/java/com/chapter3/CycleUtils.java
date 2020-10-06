@@ -13,7 +13,6 @@ public class CycleUtils {
                 break;
             case 2:
                 System.out.println("Two");
-                break;
             case 3:
                 System.out.println("Three");
                 break;
