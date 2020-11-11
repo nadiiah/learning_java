@@ -4,8 +4,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.Scanner;
 
-
 public class StringUtil {
+    private static char letterToWorkWith = 'a';
 
     private static String getEnteredText(String enteredString) {
         return enteredString;
@@ -19,7 +19,7 @@ public class StringUtil {
         int count = 0;
 
         for (int i = 0; i < enteredString.length(); i++) {
-            if (enteredString.charAt(i) == 'a') {
+            if (enteredString.charAt(i) == letterToWorkWith) {
                 count++;
             }
         }
@@ -27,17 +27,17 @@ public class StringUtil {
     }
 
     private static void findLetterIndex(String enteredString) {
-        int start = enteredString.indexOf('a');
+        int start = enteredString.indexOf(letterToWorkWith);
 
         while (start != -1) {
             System.out.print(start + StringUtils.SPACE);
-            start = enteredString.indexOf('a', start + 1);
+            start = enteredString.indexOf(letterToWorkWith, start + 1);
         }
         System.out.print(StringUtils.LF);
     }
 
     private static String replaceLetters(String enteredString) {
-        return enteredString.replace('a', 'A');
+        return enteredString.replace(letterToWorkWith, 'A');
     }
 
     private static void makeArrayFromString(String enteredString) {
@@ -47,8 +47,8 @@ public class StringUtil {
     }
 
     private static String subtractText(String enteredString) {
-        int firstAIndex = enteredString.indexOf('a');
-        int lastAIndex = enteredString.lastIndexOf('a');
+        int firstAIndex = enteredString.indexOf(letterToWorkWith);
+        int lastAIndex = enteredString.lastIndexOf(letterToWorkWith);
 
         return enteredString.substring(firstAIndex, lastAIndex + 1);
     }
@@ -73,8 +73,7 @@ public class StringUtil {
     public static String enterAndReadText() {
         Scanner string = new Scanner(System.in);
         System.out.print("Please enter a string which will be processed: ");
-        String strFromConsole = string.nextLine();
-        return strFromConsole;
+        return string.nextLine();
     }
 
     public static void workWithEnteredString(String enteredString) {
