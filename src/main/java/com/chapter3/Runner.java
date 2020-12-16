@@ -6,8 +6,8 @@ public class Runner {
         int counter = 0;
         int amountOfRows = 0;
         int amountOfColumns = -1;
-        int firstMat[][];
-        int secondMat[][];
+        int[][] firstMat;
+        int[][] secondMat;
 
         while ((amountOfColumns != amountOfRows) && (counter < 3)) {
             counter++;
