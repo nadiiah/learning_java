@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class MatrixMultiplying {
 
-    public static int[][]  readMatrix() {
+    public static int[][] readMatrix() {
         Scanner in = new Scanner(System.in);
         System.out.print("Please enter a number of rows in a matrix: ");
         int row = in.nextInt();
@@ -13,8 +13,8 @@ public class MatrixMultiplying {
         int col = in.nextInt();
         int[][] matrix = new int[row][col];
         System.out.print("Please enter elements of the matrix divided by space: ");
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
                 matrix[i][j] = in.nextInt();
             }
         }
@@ -22,17 +22,16 @@ public class MatrixMultiplying {
         return matrix;
     }
 
-    public static void multipleMatrix(int [][] firstMat, int [][] secondMat){
-        int [][] resultMatrix = new int [firstMat.length][secondMat[0].length];
-        for (int i=0; i<firstMat[i].length; i++){
-            for (int j=0; j<firstMat.length; j++){
-                for (int k = 0; k < secondMat[k].length; k++) {
-                    for (int l = 0; l < secondMat.length; l++) {
-                    resultMatrix[i][l] = firstMat[i][j]*secondMat[k][l]+firstMat[i][j+1]*secondMat[k+1][l];
+    public static void multipleMatrix(int[][] firstMat, int[][] secondMat) {
+        int[][] resultMatrix = new int[firstMat.length][secondMat[0].length];
+        for (int row = 0; row < firstMat.length; row++) {
+            for (int col = 0; col <secondMat[0].length ; col++) {
+                resultMatrix[row][col] = 0;
+                for (int i = 0; i < secondMat.length; i++) {
+                        resultMatrix[row][col] += firstMat[row][i] * secondMat[i][col];
                     }
                 }
             }
-        }
         System.out.println(Arrays.deepToString(resultMatrix));
     }
 }

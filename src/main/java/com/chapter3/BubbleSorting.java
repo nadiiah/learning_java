@@ -15,7 +15,9 @@ public class BubbleSorting {
             }
         }
         System.out.print("Array sorted using Bubble Sorting method: ");
-        for (int element : numbers) System.out.print(element + " ");
-        System.out.print(StringUtils.LF);
+        for (int element : numbers) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
     }
 }
