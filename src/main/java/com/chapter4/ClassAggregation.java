@@ -6,7 +6,10 @@ public class ClassAggregation {
 
     private List<ClassDependency> agg;
 
-    int ClassAggregation() {
+    //empty constructor
+    public ClassAggregation() { }
+
+    int ClassAggregationMethod() {
         return agg.size();
     }
 }

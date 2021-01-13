@@ -4,7 +4,7 @@ public class ClassRelationship extends Object {
 
     private int number;
 
-    ClassRelationship(int n) {
+    public ClassRelationship(int n) {
         number = n;
     }
 
@@ -12,8 +12,13 @@ public class ClassRelationship extends Object {
         return number;
     }
 
-    public int incrementNumber() {
-        number++;
-        return number;
+    int decrementNumber(int n) {
+        n--;
+        return n;
+    }
+
+    public int incrementNumber(int n) {
+        n++;
+        return n;
     }
 }
