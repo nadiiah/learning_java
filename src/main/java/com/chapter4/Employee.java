@@ -2,15 +2,15 @@ package com.chapter4;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Scanner;
 
 public class Employee {
     private String firstName;
     private String lastName;
     private LocalDate birthDate = LocalDate.ofEpochDay(0);
     private final LocalDate hiringDate;
-    private LocalDate nearestSalaryDate;
+    private static LocalDate nearestSalaryDate;
     private static int employeeId = 0;
+    public static final int dayOfSalary = 11;
     private static final LocalDate now = LocalDate.now();
 
     public Employee(String first, String last) {
@@ -18,52 +18,58 @@ public class Employee {
         lastName = last;
         hiringDate = now;
         employeeId++;
-        System.out.printf("Employee #%s: %s, %s, %s, %s.\n", employeeId, firstName, lastName, birthDate.toString(), hiringDate.toString());
+        employeeDataToString();
     }
 
-    public Employee(String first, String last, String birth) {
+    public Employee(String first, String last, LocalDate birth) {
         firstName = first;
         lastName = last;
-        birthDate = LocalDate.parse(birth);
+        birthDate = birth;
         hiringDate = now;
         employeeId++;
-        System.out.printf("Employee #%s: %s, %s, %s, %s.\n", employeeId, firstName, lastName, birthDate.toString(), hiringDate.toString());
+        employeeDataToString();
     }
 
-    public Employee(String first, String last, String birth, String hiring) {
+    public Employee(String first, String last, LocalDate birth, LocalDate hiring) {
         firstName = first;
         lastName = last;
-        birthDate = LocalDate.parse(birth);
-        hiringDate = LocalDate.parse(hiring);
+        birthDate = birth;
+        hiringDate = hiring;
         employeeId++;
+        employeeDataToString();
+    }
+
+    public void employeeDataToString() {
         System.out.printf("Employee #%s: %s, %s, %s, %s.\n", employeeId, firstName, lastName, birthDate.toString(), hiringDate.toString());
     }
 
-    public static Employee readNewEmployee() {
-        String birth = LocalDate.ofEpochDay(0).toString();
-        String hiring = "";
-        System.out.println("Please fill in a new employee data:");
-        Scanner input = new Scanner(System.in);
-        String first = input.nextLine();
-        String last = input.nextLine();
-        if (input.hasNextLine() && input.nextLine().length() > 0) {
-            birth = input.nextLine();
-            return new Employee(first, last, birth);
+    private int countYearsFromBirthday() {
+        return Period.between(birthDate, now).getYears();
+    }
+
+    private int countYearsFromHiringDate() {
+        int yearsOnWork;
+        if ((now.getDayOfMonth() >= hiringDate.getDayOfMonth()) && (now.getMonthValue() >= hiringDate.getMonthValue())) {
+            yearsOnWork = now.getYear() - hiringDate.getYear();
+        } else if (now.getYear() == hiringDate.getYear()) {
+            yearsOnWork = 0;
         } else {
-            hiring = input.nextLine();
-            return new Employee(first, last, birth, hiring);
+            yearsOnWork = now.getYear() - hiringDate.getYear() - 1;
         }
+        return yearsOnWork;
     }
 
-    public void countYearsFrom() {
-        int age = Period.between(birthDate, now).getYears();
-        int yearsOnWork = Period.between(hiringDate, now).getYears();
-        System.out.printf("Employee age is %s.\n", age);
-        System.out.printf("Employee has been working for the company for %s years.\n", yearsOnWork);
+    private static int countDaysTillSalary() {
+        nearestSalaryDate = now.withDayOfMonth(dayOfSalary).plusMonths(1);
+        return Period.between(now, nearestSalaryDate).getDays();
     }
 
-    public void countDaysTillSalary() {
-        nearestSalaryDate = now.withDayOfMonth(11).plusMonths(1);
-        System.out.printf("Next salary will come on %s.\n", nearestSalaryDate);
+    public void printResults() {
+        System.out.printf("Employee age is %d.\n", countYearsFromBirthday());
+        System.out.printf("Employee has been working for the company for %s years.\n", countYearsFromHiringDate());
+    }
+
+    public static void printDaysTillSalary(){
+        System.out.printf("Next salary will come in %s days.\n", countDaysTillSalary());
     }
 }
