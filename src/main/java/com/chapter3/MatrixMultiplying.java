@@ -25,13 +25,12 @@ public class MatrixMultiplying {
     public static void multipleMatrix(int[][] firstMat, int[][] secondMat) {
         int[][] resultMatrix = new int[firstMat.length][secondMat[0].length];
         for (int row = 0; row < firstMat.length; row++) {
-            for (int col = 0; col <secondMat[0].length ; col++) {
-                resultMatrix[row][col] = 0;
+            for (int col = 0; col < secondMat[0].length; col++) {
                 for (int i = 0; i < secondMat.length; i++) {
-                        resultMatrix[row][col] += firstMat[row][i] * secondMat[i][col];
-                    }
+                    resultMatrix[row][col] += firstMat[row][i] * secondMat[i][col];
                 }
             }
+        }
         System.out.println(Arrays.deepToString(resultMatrix));
     }
 }
