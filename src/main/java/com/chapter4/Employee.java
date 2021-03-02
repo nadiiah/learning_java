@@ -10,7 +10,7 @@ public class Employee {
     private final LocalDate hiringDate;
     private static LocalDate nearestSalaryDate;
     private static int employeeId = 0;
-    public static final int dayOfSalary = 11;
+    public static final int DAY_OF_SALARY = 11;
     private static final LocalDate now = LocalDate.now();
 
     public Employee(String first, String last) {
@@ -18,7 +18,7 @@ public class Employee {
         lastName = last;
         hiringDate = now;
         employeeId++;
-        employeeDataToString();
+        printEmployeeData();
     }
 
     public Employee(String first, String last, LocalDate birth) {
@@ -27,7 +27,7 @@ public class Employee {
         birthDate = birth;
         hiringDate = now;
         employeeId++;
-        employeeDataToString();
+        printEmployeeData();
     }
 
     public Employee(String first, String last, LocalDate birth, LocalDate hiring) {
@@ -36,10 +36,10 @@ public class Employee {
         birthDate = birth;
         hiringDate = hiring;
         employeeId++;
-        employeeDataToString();
+        printEmployeeData();
     }
 
-    public void employeeDataToString() {
+    public void printEmployeeData() {
         System.out.printf("Employee #%s: %s, %s, %s, %s.\n", employeeId, firstName, lastName, birthDate.toString(), hiringDate.toString());
     }
 
@@ -60,7 +60,7 @@ public class Employee {
     }
 
     private static int countDaysTillSalary() {
-        nearestSalaryDate = now.withDayOfMonth(dayOfSalary).plusMonths(1);
+        nearestSalaryDate = now.withDayOfMonth(DAY_OF_SALARY).plusMonths(1);
         return Period.between(now, nearestSalaryDate).getDays();
     }
 
