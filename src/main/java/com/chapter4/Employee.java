@@ -43,33 +43,33 @@ public class Employee {
         System.out.printf("Employee #%s: %s, %s, %s, %s.\n", employeeId, firstName, lastName, birthDate.toString(), hiringDate.toString());
     }
 
-    private int countYearsFromBirthday() {
+    private int getYearsFromBirthday() {
         return Period.between(birthDate, now).getYears();
     }
 
-    private int countYearsFromHiringDate() {
+    private int getYearsFromHiringDate() {
         int yearsOnWork;
-        if ((now.getDayOfMonth() >= hiringDate.getDayOfMonth()) && (now.getMonthValue() >= hiringDate.getMonthValue())) {
-            yearsOnWork = now.getYear() - hiringDate.getYear();
-        } else if (now.getYear() == hiringDate.getYear()) {
+        if (now.getYear() == hiringDate.getYear()) {
             yearsOnWork = 0;
+        } else if ((now.getDayOfMonth() >= hiringDate.getDayOfMonth()) && (now.getMonthValue() >= hiringDate.getMonthValue())) {
+            yearsOnWork = now.getYear() - hiringDate.getYear();
         } else {
             yearsOnWork = now.getYear() - hiringDate.getYear() - 1;
         }
         return yearsOnWork;
     }
 
-    private static int countDaysTillSalary() {
+    private static int getDaysTillSalary() {
         nearestSalaryDate = now.withDayOfMonth(DAY_OF_SALARY).plusMonths(1);
         return Period.between(now, nearestSalaryDate).getDays();
     }
 
     public void printResults() {
-        System.out.printf("Employee age is %d.\n", countYearsFromBirthday());
-        System.out.printf("Employee has been working for the company for %s years.\n", countYearsFromHiringDate());
+        System.out.printf("Employee age is %d.\n", getYearsFromBirthday());
+        System.out.printf("Employee has been working for the company for %s years.\n", getYearsFromHiringDate());
     }
 
     public static void printDaysTillSalary(){
-        System.out.printf("Next salary will come in %s days.\n", countDaysTillSalary());
+        System.out.printf("Next salary will come in %s days.\n", getDaysTillSalary());
     }
 }
